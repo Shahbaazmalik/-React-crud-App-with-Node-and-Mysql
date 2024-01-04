@@ -14,9 +14,9 @@ const CreateStudents = () => {
          event.preventDefault();
         axios.post('http://localhost:8081/create',{name, email})   // use Axios to pass the data 
         .then(res => {
-           console.log(res);
+            console.log(res.data);
              navigate('/');     //navigate to home
-        }) .catch(err => console.log(err));
+        }).catch(err => console.log(err));
            
     }
 
@@ -29,14 +29,14 @@ const CreateStudents = () => {
             <div >
                {/* <label htmlFor='form-control'>Name</label> */}
                 <input type='text' placeholder='Enter Name' className='form-control'
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
                 />
 
             </div>
             <div>
                 {/* <label htmlFor='form-control2'>Email</label> */}
                 <input type='text' placeholder='Enter Email' className='form-control2'
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
             <button className='bg-blue-500 text-white'>Submit</button>

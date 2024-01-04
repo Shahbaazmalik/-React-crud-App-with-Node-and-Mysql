@@ -8,7 +8,10 @@ const Students = () => {
 
     useEffect(() => {
         axios.get('http://localhost:8081')                // give/fetch data from api
-          .then(res => setStudent(res.data))  
+           .then(res => {
+             //   console.log(res.data);
+              setStudent(res.data)
+            })  
           .catch(err => console.log(err));
       }, [])
 
