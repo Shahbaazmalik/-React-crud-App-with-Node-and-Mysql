@@ -12,7 +12,7 @@ const CreateStudents = () => {
 
     function handleSubmit(event){
          event.preventDefault();
-        axios.post('http://localhost:8081/create/',{name, email})   // use Axios to pass the data 
+        axios.post('http://localhost:8081/create',{name, email})   // use Axios to pass the data 
         .then(res => {
            console.log(res);
              navigate('/');     //navigate to home
@@ -22,8 +22,8 @@ const CreateStudents = () => {
 
 
   return (
-  <div className=' '>
-     <div className=' bg-slate-200 rounded p-20 flex  justify-center items-center'>
+  <div className='bg-slate-200 max-h-full w-full '>
+     <div className='  rounded p-20 flex  justify-center items-center'>
         <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
             <h2>Add Student </h2>
             <div >

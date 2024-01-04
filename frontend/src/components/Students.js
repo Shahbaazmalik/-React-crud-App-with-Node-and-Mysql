@@ -7,14 +7,14 @@ const Students = () => {
     const [student, setStudent]=useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8081/')                // give/fetch data from api
+        axios.get('http://localhost:8081')                // give/fetch data from api
           .then(res => setStudent(res.data))  
           .catch(err => console.log(err));
       }, [])
 
       const handleDelete = async (id) => {
         try{
-            await axios.delete('http://localhost:8081/student/'+id)
+            await axios.delete('http://localhost:8081/student'+id)
             window.location.reload()
         }
         catch(err){
@@ -23,7 +23,7 @@ const Students = () => {
       }
 
   return (
-    <div className='p-20  - text-center  bg-blue-200   '>
+    <div className='p-20  text-center  bg-blue-200    '>
         <div className='p-10 flex flex-col justify-center items-center  gap-2'>
         
             <table className='bg-slate-100  w-[40%] '>
@@ -36,7 +36,7 @@ const Students = () => {
                    
                 </thead>
                 
-                <tbody>
+                <tbody className=''>
                    
                    { 
                        student.map((data, i) => {
