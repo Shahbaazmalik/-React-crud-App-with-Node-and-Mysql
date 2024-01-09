@@ -25,24 +25,26 @@ app.get("/", (req, res) => {
 } )
 
 app.post('/create', (req, res) => {              // To add data
-     const sql = "INSERT INTO student (`Name`,`Email`) VALUES (?)";
+     const sql = "INSERT INTO student (Name,Email) VALUES (?)";
     const values = [
                req.body.name,
                req.body.email
        ]
 
        db.query(sql, [values], (err, data) => {
+        console.log('Error: '+err);
              if(err) return res.json("Error");
                return res.json(data);
 
       })
 })
 
-app.put('/update/:id', (req, res) => {                 // to update data
-    const sql = "UPDATE student set `Name` = ?, `Email` = ?, where ID = ?";
+app.put('/update', (req, res) => {                 // to update data
+    const sql = "UPDATE student set Name = ?, Email = ? where Id = ?";
     const values = [
                req.body.name,
-               req.body.email
+               req.body.email,
+               req.body.id
        ]
        const id = req.params.id;
 
@@ -53,10 +55,11 @@ app.put('/update/:id', (req, res) => {                 // to update data
       })
 })
 
-app.delete('student/:id', (req, res) => {                 // to update data
-    const sql = "DELETE FROM `student` WHERE ID = ?";
+app.delete('student/', (req, res) => {                 // to update data
+    const sql = "DELETE FROM `student` WHERE Id = ?";
    
        const id = req.params.id;
+       console.log("id from bac"+req.params.id);
 
        db.query(sql, [id], (err, data) => {
              if(err) return res.json("Error");

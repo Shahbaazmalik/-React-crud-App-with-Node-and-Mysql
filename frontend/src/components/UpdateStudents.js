@@ -13,7 +13,8 @@ const UpdateStudents = () => {
 
     function handleSubmit(event){
          event.preventDefault();
-        axios.put('http://localhost:8081/update'+id, { name, email})   // use Axios to pass the data 
+         console.log('update id:'+id);
+        axios.put('http://localhost:8081/update', {id, name, email})   // use Axios to pass the data 
         .then(res => {
            console.log(res);
              navigate('/');             //navigate to home

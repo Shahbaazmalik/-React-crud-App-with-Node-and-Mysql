@@ -16,6 +16,7 @@ const Students = () => {
       }, [])
 
       const handleDelete = async (id) => {
+        console.log("id is "+id);
         try{
             await axios.delete('http://localhost:8081/student'+id)
             window.location.reload()
@@ -43,14 +44,15 @@ const Students = () => {
                    
                    { 
                        student.map((data, i) => {
+                
                        return(
                         <tr key={i}>
                         <td>{data.Name}</td> 
                         <td>{data.Email}</td> 
                         <td className='flex gap-1'>
-                            <Link to={`update/${data.ID}`} className='bg-green-400 text-white rounded  '>Update</Link>
+                            <Link to={`update/${data.Id}`} className='bg-green-400 text-white rounded  '>Update</Link>
                             <button className='bg-red-400 text-white rounded '
-                             onClick={e => handleDelete(data.ID)}>Delete
+                             onClick={e => handleDelete(data.Id)}>Delete
                             </button>
                         </td>
                      </tr>  
