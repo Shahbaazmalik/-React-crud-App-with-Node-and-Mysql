@@ -55,13 +55,13 @@ app.put('/update', (req, res) => {                 // to update data
       })
 })
 
-app.delete('student/', (req, res) => {                 // to update data
-    const sql = "DELETE FROM `student` WHERE Id = ?";
+app.delete('/student/:Id', (req, res) => {                 // to update data
+    const sql = "DELETE FROM student WHERE Id = ?";
    
-       const id = req.params.id;
-       console.log("id from bac"+req.params.id);
+       const id = req.params.Id;
 
        db.query(sql, [id], (err, data) => {
+       
              if(err) return res.json("Error");
                return res.json(data);
 
